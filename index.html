@@ -1,4 +1,3 @@
-<!-- prueba -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,6 +27,7 @@
       cursor: pointer;
       color: white;
       margin: 10px;
+      transition: transform 0.3s;
     }
     button:hover {
       background: #ff1e4d;
@@ -37,25 +37,61 @@
 <body>
 
   <div class="card">
-    <h1>💖 Hola amor 💖</h1>
-    <p>Quiero preguntarte algo muy especial…</p>
-    <h2>¿Quieres ser mi San Valentín? 🌹</h2>
+    <h1>💖 Hola mi niña hermosa 💖</h1>
+    <p>Desde que llegaste a mi vida, todo es mejor.</p>
+    <h2>¿Quieres ser mi San Valentín este 14 de febrero? 🌹</h2>
 
     <button onclick="si()">¡Sí! 😍</button>
-    <button onclick="no()">No 😢</button>
+    <button id="noBtn" onclick="no()">No 😢</button>
 
     <p id="respuesta"></p>
   </div>
 
   <script>
-    function si() {
-      document.getElementById("respuesta").innerHTML =
-        "💘 Sabía que dirías que sí 💘<br>Te amo muchísimo 😘";
-    }
+    // Mensajes para el botón "No"
+    let mensajesNo = [
+      "🥺 ¿Estás segura?",
+      "😢 Vamos, piénsalo otra vez",
+      "💔 Mi corazoncito no aguanta",
+      "😏 Sabemos que quieres decir que sí",
+      "💖 Ándale, di que síiiii"
+    ];
+
+    let contadorNo = 0;
+    const noBtn = document.getElementById("noBtn");
 
     function no() {
-      document.getElementById("respuesta").innerHTML =
-        "😅 Opción inválida... inténtalo otra vez ❤️";
+      const respuesta = document.getElementById("respuesta");
+
+      if (contadorNo < mensajesNo.length) {
+        // Mostrar mensaje
+        respuesta.innerHTML = mensajesNo[contadorNo];
+
+        // Reducir tamaño del botón
+        let newSize = 100 - (contadorNo + 1) * 15; // porcentaje
+        noBtn.style.transform = `scale(${newSize/100})`;
+
+        contadorNo++;
+
+        // Después del 5to click, desaparece
+        if (contadorNo === mensajesNo.length) {
+          noBtn.style.display = "none";
+        }
+      }
+    }
+
+    function si() {
+      const respuesta = document.getElementById("respuesta");
+
+      // Mensaje romántico
+      respuesta.innerHTML =
+        "💘 Sabía que dirías que sí 💘<br>Te amo muchísimo 😘<br><br>" +
+        "📸 Por favor, mándame esta captura de pantalla para confirmar tu asistencia.";
+
+      // Reinicia el botón "No" por si quieres usarlo otra vez
+      contadorNo = 0;
+      noBtn.style.display = "inline-block";
+      noBtn.style.transform = "scale(1)";
     }
   </script>
 
