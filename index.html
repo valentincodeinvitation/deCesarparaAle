@@ -106,8 +106,8 @@
 
   <!-- Propuesta -->
   <div class="card" id="propuesta" style="display:none;">
-    <h1>💖 Hola mi amor 💖</h1>
-    <p>Desde que llegaste a mi vida, todo es mejor. Es por eso que quiero preguntarte como cada año:.</p>
+    <h1>💖 Hola mi niña hermosa 💖</h1>
+    <p>Desde que llegaste a mi vida, todo es mejor.</p>
     <h2>¿Quieres ser mi San Valentín este 14 de febrero? 🌹</h2>
 
     <button id="btnSi" onclick="si()">¡Sí! 😍</button>
@@ -116,10 +116,10 @@
     <div id="respuesta"></div>
   </div>
 
-  <!-- Música FIXED, SIN RADIO -->
+  <!-- Música (video fijo sin playlist) -->
   <iframe
     id="musica"
-    src="https://www.youtube.com/embed/uTT9Bg_duiU"
+    src="https://www.youtube.com/embed/kadaJqv6SDk"
     allow="autoplay">
   </iframe>
 
@@ -137,9 +137,9 @@
     const btnSi = document.getElementById("btnSi");
 
     function entrar() {
-      // reproducir canción (solo después del click)
+      // Reproducir SOLO el video correcto
       document.getElementById("musica").src =
-        "https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=1&rel=0";
+        "https://www.youtube.com/embed/kadaJqv6SDk?autoplay=1&rel=0";
 
       let tiempo = 10;
       const contador = document.getElementById("contador");
@@ -177,7 +177,7 @@
         <div class="mensaje-final">
           💘 Sabía que dirías que sí 💘<br><br>
           Te amo muchísimo 😘<br><br>
-          📸 Mándame esta captura para confirmarlo 💕
+          📸 Mándame esta captura 💕
         </div>
       `;
     }
