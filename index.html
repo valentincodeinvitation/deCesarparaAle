@@ -2,46 +2,96 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>¿Quieres ser mi San Valentín? ❤️</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
+      margin: 0;
+      min-height: 100vh;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
     }
+
     .card {
-      background: rgba(0,0,0,0.25);
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 420px;
-      margin: auto;
+      background: rgba(0,0,0,0.28);
+      padding: 26px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 15px 0;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
     button {
+      width: 100%;
       background: #ff4d6d;
       border: none;
-      padding: 15px 30px;
-      font-size: 20px;
+      padding: 16px;
+      font-size: 1.1rem;
       border-radius: 30px;
       cursor: pointer;
       color: white;
-      margin: 15px;
+      margin: 12px 0;
+      font-weight: 600;
     }
-    button:hover {
+
+    button:active {
+      transform: scale(0.97);
       background: #ff1e4d;
     }
+
+    #contador {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+    }
+
+    #respuesta {
+      margin-top: 15px;
+      font-size: 1.05rem;
+    }
+
     .confetti {
       position: fixed;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       pointer-events: none;
       animation: fall 3s linear forwards;
+      z-index: 999;
     }
+
     @keyframes fall {
-      0% { transform: translateY(-50px) rotate(0deg); opacity:1; }
+      0% { transform: translateY(-40px) rotate(0deg); opacity:1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
     }
+
     iframe {
       display: none;
     }
@@ -49,83 +99,14 @@
 </head>
 <body>
 
-  <!-- Entrada -->
+  <!-- Pantalla de entrada -->
   <div class="card" id="entrada">
     <h1>💌 Tengo algo muy importante que preguntarte 💌</h1>
-    <button type="button" onclick="entrar()">Entrar 💖</button>
+    <button onclick="entrar()">Entrar 💖</button>
+    <div id="contador">10</div>
   </div>
 
   <!-- Propuesta -->
   <div class="card" id="propuesta" style="display:none;">
-    <h1>💖 Hola mi niña hermosa 💖</h1>
-    <p>Desde que llegaste a mi vida, todo es mejor.</p>
-    <h2>¿Quieres ser mi San Valentín este 14 de febrero? 🌹</h2>
-
-    <button type="button" onclick="si()">¡Sí! 😍</button>
-    <button type="button" id="noBtn" onclick="no()">No 😢</button>
-
-    <p id="respuesta"></p>
-  </div>
-
-  <!-- Música: VIDEO EXACTO -->
-  <iframe
-    id="musica"
-    src="https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=0"
-    allow="autoplay">
-  </iframe>
-
-  <script>
-    let mensajesNo = [
-      "🥺 ¿Estás segura?",
-      "😢 Vamos, piénsalo otra vez",
-      "💔 Mi corazoncito no aguanta",
-      "😏 Sabemos que quieres decir que sí",
-      "💖 Ándale, di que síiiii"
-    ];
-
-    let contadorNo = 0;
-    const noBtn = document.getElementById("noBtn");
-
-    function entrar() {
-      document.getElementById("entrada").style.display = "none";
-      document.getElementById("propuesta").style.display = "block";
-
-      const musica = document.getElementById("musica");
-      musica.src = "https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=1";
-    }
-
-    function no() {
-      const respuesta = document.getElementById("respuesta");
-      if (contadorNo < mensajesNo.length) {
-        respuesta.innerHTML = mensajesNo[contadorNo];
-        noBtn.style.transform = `scale(${1 - contadorNo * 0.15})`;
-        contadorNo++;
-        if (contadorNo === mensajesNo.length) {
-          noBtn.style.display = "none";
-        }
-      }
-    }
-
-    function si() {
-      const respuesta = document.getElementById("respuesta");
-      respuesta.innerHTML =
-        "💘 Sabía que dirías que sí 💘<br>" +
-        "Te amo muchísimo 😘<br><br>" +
-        "📸 Mándame esta captura para confirmar 💕";
-      lanzarConfeti(60);
-    }
-
-    function lanzarConfeti(cantidad) {
-      for (let i = 0; i < cantidad; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 3000);
-      }
-    }
-  </script>
-
-</body>
-</html>
+    <h1>💖 Hola mi amor 💖</h1>
+    <p
