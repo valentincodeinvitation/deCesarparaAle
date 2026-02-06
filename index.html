@@ -32,17 +32,6 @@
     button:hover {
       background: #ff1e4d;
     }
-    img {
-      max-width: 110px;
-      border-radius: 20px;
-      margin: 8px;
-      animation: latido 2s infinite;
-    }
-    @keyframes latido {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
     .confetti {
       position: fixed;
       width: 10px;
@@ -61,10 +50,10 @@
 </head>
 <body>
 
-  <!-- Pantalla de entrada -->
+  <!-- Entrada -->
   <div class="card" id="entrada">
     <h1>💌 Tengo algo muy importante que preguntarte 💌</h1>
-    <button onclick="entrar()">Entrar 💖</button>
+    <button type="button" onclick="entrar()">Entrar 💖</button>
   </div>
 
   <!-- Propuesta -->
@@ -73,23 +62,16 @@
     <p>Desde que llegaste a mi vida, todo es mejor.</p>
     <h2>¿Quieres ser mi San Valentín este 14 de febrero? 🌹</h2>
 
-    <button onclick="si()">¡Sí! 😍</button>
-    <button id="noBtn" onclick="no()">No 😢</button>
+    <button type="button" onclick="si()">¡Sí! 😍</button>
+    <button type="button" id="noBtn" onclick="no()">No 😢</button>
 
     <p id="respuesta"></p>
-
-    <div>
-      <img src="https://placekitten.com/120/120">
-      <img src="https://placekitten.com/121/121">
-      <img src="https://placekitten.com/122/122">
-      <img src="https://placekitten.com/123/123">
-    </div>
   </div>
 
-  <!-- Música: O Tú O Ninguna - Luis Miguel -->
+  <!-- Música: tu canción de YouTube -->
   <iframe
     id="musica"
-    src="https://www.youtube.com/embed/K3Qzzggn--s?enablejsapi=1"
+    src="https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=0&enablejsapi=1"
     allow="autoplay">
   </iframe>
 
@@ -108,7 +90,10 @@
     function entrar() {
       document.getElementById("entrada").style.display = "none";
       document.getElementById("propuesta").style.display = "block";
-      reproducirMusica();
+
+      // Cargar música con autoplay
+      const musica = document.getElementById("musica");
+      musica.src = "https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=1";
     }
 
     function no() {
@@ -129,11 +114,7 @@
         "💘 Sabía que dirías que sí 💘<br>" +
         "Te amo muchísimo 😘<br><br>" +
         "📸 Mándame esta captura para confirmar tu asistencia 💕";
-
       lanzarConfeti(60);
-      contadorNo = 0;
-      noBtn.style.display = "inline-block";
-      noBtn.style.transform = "scale(1)";
     }
 
     function lanzarConfeti(cantidad) {
@@ -145,11 +126,6 @@
         document.body.appendChild(confetti);
         setTimeout(() => confetti.remove(), 3000);
       }
-    }
-
-    function reproducirMusica() {
-      const iframe = document.getElementById("musica");
-      iframe.src += "&autoplay=1&volume=30";
     }
   </script>
 
