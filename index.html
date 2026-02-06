@@ -10,7 +10,6 @@
       text-align: center;
       padding: 50px;
       color: #fff;
-      overflow-x: hidden;
     }
     .card {
       background: rgba(0,0,0,0.25);
@@ -68,10 +67,10 @@
     <p id="respuesta"></p>
   </div>
 
-  <!-- Música: tu canción de YouTube -->
+  <!-- Música: VIDEO EXACTO -->
   <iframe
     id="musica"
-    src="https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=0&enablejsapi=1"
+    src="https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=0"
     allow="autoplay">
   </iframe>
 
@@ -91,7 +90,6 @@
       document.getElementById("entrada").style.display = "none";
       document.getElementById("propuesta").style.display = "block";
 
-      // Cargar música con autoplay
       const musica = document.getElementById("musica");
       musica.src = "https://www.youtube.com/embed/uTT9Bg_duiU?autoplay=1";
     }
@@ -113,7 +111,7 @@
       respuesta.innerHTML =
         "💘 Sabía que dirías que sí 💘<br>" +
         "Te amo muchísimo 😘<br><br>" +
-        "📸 Mándame esta captura para confirmar tu asistencia 💕";
+        "📸 Mándame esta captura para confirmar 💕";
       lanzarConfeti(60);
     }
 
